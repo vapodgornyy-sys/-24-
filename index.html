@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>УборкаСнега24 - Профессиональная уборка снега</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #e8f1ff;
+            --accent: #ff6b35;
+            --accent-dark: #e55a2b;
+            --dark: #1a3a6e;
+            --light: #f8fafc;
+            --snow: #f0f7ff;
+            --discount: #4CAF50;
+            --warning: #ff9800;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-mobile: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--snow);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        
+        /* Шапка - Мобильная версия */
+        header {
+            background-color: white;
+            padding: 12px 0;
+            box-shadow: var(--shadow-mobile);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            font-size: 1.6rem;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .contact-info {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .phone {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info div:last-child {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Главный экран - Мобильная версия */
+        .hero {
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            min-height: auto;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+        }
+        
+        .hero-text {
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            width: 100%;
+            word-break: break-word;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            width: 100%;
+            padding: 0 5px;
+        }
+        
+        .hero-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .badge {
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .badge.discount {
+            background-color: var(--discount);
+        }
+        
+        .social-links {
+            width: 100%;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        .main-tractor {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+            height: auto;
+            object-fit: cover;
+            max-height: 300px;
+        }
+        
+        /* Оборудование - Мобильная версия */
+        .equipment-section {
+            padding: 40px 0;
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+            position: relative;
+            padding: 0 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .equipment-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 50px;
+            width: 100%;
+            padding: 0 5px;
+        }
+        
+        .equipment-image {
+            width: 100%;
+            position: relative;
+        }
+        
+        .equipment-img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-mobile);
+            border: 6px solid white;
+            height: auto;
+            object-fit: cover;
+            max-height: 250px;
+        }
+        
+        .equipment-info {
+            width: 100%;
+            text-align: center;
+            padding: 0 5px;
+        }
+        
+        .equipment-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .equipment-description {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #555;
+            text-align: left;
+        }
+        
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .features-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .features-list i {
+            color: var(--accent);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        /* Калькулятор - Мобильная версия */
+        .calculator-section {
+            padding: 40px 0;
+            background-color: white;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .calculator-container {
+            width: 100%;
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-mobile);
+            box-sizing: border-box;
+        }
+        
+        .calculator-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+        
+        .input-group {
+            margin-bottom: 18px;
+            width: 100%;
+        }
+        
+        .input-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .weather-note {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--warning);
+            font-size: 0.9rem;
+        }
+        
+        .weather-note ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .weather-note li {
+            margin-bottom: 5px;
+        }
+        
+        .discounts-info {
+            background-color: #e8f7e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--discount);
+            font-size: 0.9rem;
+        }
+        
+        .result-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 5px solid var(--accent);
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .result-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .total-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+        
+        .price-breakdown {
+            text-align: left;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            color: #666;
+            flex-wrap: wrap;
+        }
+        
+        .breakdown-item.total {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 2px solid #eee;
+        }
+        
+        /* Форма заказа - Мобильная версия */
+        .order-section {
+            padding: 40px 0;
+            background-color: var(--light);
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .form-container {
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-mobile);
+            box-sizing: border-box;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            touch-action: manipulation;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-telegram {
+            background-color: #0088cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .btn-telegram:hover {
+            background-color: #0077b5;
+        }
+        
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            top: 70px;
+            right: 15px;
+            left: 15px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            max-width: calc(100vw - 30px);
+            box-sizing: border-box;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            background-color: var(--discount);
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.info {
+            background-color: var(--primary);
+        }
+        
+        /* Подвал - Мобильная версия */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-links i {
+            margin-right: 8px;
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.8rem;
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        /* Анимации */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Прогресс-бар */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--accent);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+        
+        /* Состояние отправки */
+        .sending {
+            opacity: 0.7;
+            cursor: wait;
+        }
+        
+        /* Стили для полей с ошибками */
+        .error-input {
+            border-color: #f44336 !important;
+            background-color: #fff5f5;
+        }
+        
+        .error-message {
+            color: #f44336;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Улучшения для очень маленьких экранов */
+        @media (max-width: 350px) {
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .badge {
+                font-size: 0.85rem;
+                padding: 7px 12px;
+            }
+            
+            .price-tag {
+                font-size: 1.2rem;
+            }
+            
+            .total-price {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Планшет и большие телефоны */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 20px;
+                max-width: 720px;
+            }
+            
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            
+            .contact-info {
+                text-align: right;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-badges {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .badge {
+                width: auto;
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .input-row {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .footer-content {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .footer-section {
+                flex: 1;
+                min-width: 250px;
+                text-align: left;
+            }
+            
+            .footer-links {
+                text-align: left;
+            }
+            
+            .main-tractor {
+                max-height: 400px;
+            }
+            
+            .equipment-img {
+                max-height: 300px;
+            }
+        }
+        
+        /* Десктоп */
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .hero-content {
+                flex-direction: row;
+            }
+            
+            .hero-text {
+                text-align: left;
+            }
+            
+            .hero-subtitle {
+                text-align: left;
+                padding: 0;
+            }
+            
+            .equipment-container {
+                flex-direction: row;
+            }
+            
+            .equipment-container.reverse {
+                flex-direction: row-reverse;
+            }
+            
+            .equipment-info {
+                text-align: left;
+            }
+            
+            .equipment-description {
+                text-align: left;
+            }
+            
+            .features-list {
+                text-align: left;
+            }
+            
+            .main-tractor {
+                max-height: 450px;
+            }
+            
+            .equipment-img {
+                max-height: 350px;
+            }
+        }
+        
+        /* Очень большие экраны */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        /* Подавление масштабирования на iOS */
+        @supports (-webkit-touch-callout: none) {
+            input, select, textarea, button {
+                font-size: 16px !important; /* Предотвращает увеличение на iOS */
+            }
+        }
+        
+        /* Улучшение скролла на мобильных */
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Стили для запасных изображений */
+        .image-fallback {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6e 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Стиль для временного ограничения услуги */
+        .temporary-note {
+            font-size: 0.85rem;
+            color: #ff9800;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Прогресс-бар -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Уведомление -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-snowplow"></i>
+                Уборка<span>Снега24</span>
+            </div>
+            <div class="contact-info">
+                <div class="phone">+7 (991) 253-27-47</div>
+                <div>Работаем в любых погодных условиях</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Профессиональная уборка снега в Красногорском районе</h1>
+                <p class="hero-subtitle">Быстро, качественно и недорого уберем снег с вашего участка. Работаем в любых условиях, включая деревню Козино (Красногорское направление).</p>
+                
+                <div class="hero-badges">
+                    <div class="badge">Трактор Агромаш МТ-110</div>
+                    <div class="badge discount">Скидки пенсионерам -10%</div>
+                    <div class="badge">Человек с лопатой +500 руб</div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://t.me/SNEGOUBORKA_24BOT" class="btn btn-telegram" target="_blank" id="telegramBtn">
+                        <i class="fab fa-telegram"></i> Написать в Telegram-бот
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- ФОТО 1: Главный трактор Агромаш МТ-110 -->
+                <img src="https://avatars.mds.yandex.net/get-mpic/6583032/img_id9043768084426134165.jpeg/orig" 
+                     alt="Трактор Агромаш МТ-110" 
+                     class="main-tractor floating" 
+                     id="mainTractor"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400/2c5aa0/ffffff?text=Трактор+Агромаш+МТ-110'; this.classList.add('image-fallback');">
+            </div>
+        </div>
+    </section>
+
+    <!-- Оборудование: Трактор с отвалом -->
+    <section class="equipment-section">
+        <div class="container">
+            <h2 class="section-title">Наше оборудование</h2>
+            
+            <div class="equipment-container" id="equipment1">
+                <div class="equipment-image">
+                    <!-- ФОТО 2: Трактор с отвалом -->
+                    <img src="https://60.img.avito.st/image/1/1.lJaXZ7a4OH-Bz4J1sxGJo5PFOnkpxpp2mcw6fSfOMHUh.qoZCHmycC_FcMPYANXw_3EASeRwrCuWDdvtRWp0CQcQ" 
+                         alt="Трактор с отвалом" 
+                         class="equipment-img" 
+                         id="tractorBlade"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400/2c5aa0/ffffff?text=Трактор+с+отвалом+60+см'; this.classList.add('image-fallback');">
+                </div>
+                <div class="equipment-info">
+                    <h3 class="equipment-title">Трактор с отвалом 60 см</h3>
+                    <p class="equipment-description">Идеальное решение для быстрой и эффективной уборки свежевыпавшего снега. Отвал шириной 60 см позволяет быстро очищать большие площади.</p>
+                    
+                    <div class="price-tag">500 руб. за сотку</div>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Быстрая уборка свежего снега</li>
+                        <li><i class="fas fa-check"></i> Ширина отвала: 60 см</li>
+                        <li><i class="fas fa-check"></i> Минимальный заказ: 2000 руб.</li>
+                        <li><i class="fas fa-check"></i> +20% если снег новый и не мокрый</li>
+                        <li><i class="fas fa-check"></i> +5% при плохих погодных условиях</li>
+                    </ul>
+                    
+                    <div class="badge discount">СКИДКА: 10 соток = -10%, 15 соток = -15%</div>
+                </div>
+            </div>
+
+            <!-- Оборудование: Трактор со шнеком -->
+            <div class="equipment-container reverse" id="equipment2">
+                <div class="equipment-image">
+                    <!-- ФОТО 3: Трактор со шнековым снегоочистителем -->
+                    <img src="https://avatars.mds.yandex.net/get-autoru-vos/11025717/f7395682479810bea00af7423ba69dbf/1200x900" 
+                         alt="Трактор со шнековым снегоочистителем" 
+                         class="equipment-img" 
+                         id="tractorAuger"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400/2c5aa0/ffffff?text=Трактор+со+шнеком+110+см'; this.classList.add('image-fallback');">
+                </div>
+                <div class="equipment-info">
+                    <h3 class="equipment-title">Трактор со шнеком 110 см</h3>
+                    <p class="equipment-description">Мощное оборудование для уборки плотного снега, наста и сугробов. Шнек диаметром 110 см справляется с самыми сложными задачами.</p>
+                    
+                    <div class="price-tag">1000 руб. за сотку (x2 от отвала)</div>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Уборка плотного снега и наста</li>
+                        <li><i class="fas fa-check"></i> Диаметр шнека: 110 см</li>
+                        <li><i class="fas fa-check"></i> Минимальный заказ: 4000 руб.</li>
+                        <li><i class="fas fa-check"></i> Цена = отвал × 2</li>
+                        <li><i class="fas fa-check"></i> +20% если снег мокрый</li>
+                        <li><i class="fas fa-check"></i> +5% при плохих погодных условиях</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Дополнительная услуга: Человек с лопатой -->
+            <div class="equipment-container" id="equipment3">
+                <div class="equipment-image">
+                    <!-- ФОТО 4: Человек с лопатой -->
+                    <img src="https://cdn1.ozone.ru/s3/multimedia-r/c600/6213747579.jpg" 
+                         alt="Человек с лопатой" 
+                         class="equipment-img" 
+                         id="shovelMan"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400/2c5aa0/ffffff?text=Человек+с+лопатой'; this.classList.add('image-fallback');">
+                </div>
+                <div class="equipment-info">
+                    <h3 class="equipment-title">Человек с лопатой</h3>
+                    <p class="equipment-description">Дополнительная услуга для уборки труднодоступных мест, вокруг деревьев, построек и на небольших участках. <span class="temporary-note">(Доступна только по выходным, временно)</span></p>
+                    
+                    <div class="price-tag">+500 руб. к заказу</div>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Уборка труднодоступных мест</li>
+                        <li><i class="fas fa-check"></i> Работа вокруг деревьев и построек</li>
+                        <li><i class="fas fa-check"></i> Тщательная очистка углов</li>
+                        <li><i class="fas fa-check"></i> +20% если снег мокрый</li>
+                        <li><i class="fas fa-check"></i> +5% при плохих погодных условиях</li>
+                        <li><i class="fas fa-exclamation-circle" style="color: #ff9800;"></i> <strong>Временно доступна только по выходным дням</strong></li>
+                    </ul>
+                    
+                    <div class="badge">Заказывается только вместе с трактором</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Рассчитайте стоимость уборки</h2>
+            
+            <div class="calculator-container">
+                <h3 class="calculator-title">Калькулятор заказа</h3>
+                
+                <!-- БЛОК ПРОСЬБЫ ОПИСАТЬ ПОГОДУ -->
+                <div class="weather-note">
+                    <p><strong>Укажите состояние снега и погодные условия.</strong> Это необходимо для точного расчета стоимости.</p>
+                    <ul>
+                        <li>Свежий, пушистый снег</li>
+                        <li>Мокрый, тяжелый снег (+20%)</li>
+                        <li>Уплотненный снег, наст</li>
+                        <li>Гололед, ледяная корка (+30%)</li>
+                        <li>Сильный снегопад, метель (+5%)</li>
+                    </ul>
+                </div>
+                
+                <!-- Информация о скидках -->
+                <div class="discounts-info">
+                    <p>• Пенсионерам: -10% от итоговой стоимости (при предъявлении пенсионного удостоверения)</p>
+                    <p>• При заказе от 10 соток: -10%</p>
+                    <p>• При заказе от 15 соток: -15%</p>
+                    <p>• Скидки суммируются!</p>
+                </div>
+                
+                <form id="calculatorForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="area">Площадь участка (соток) *</label>
+                            <input type="number" id="area" min="1" value="10" step="1" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="equipment">Тип оборудования *</label>
+                            <select id="equipment" required>
+                                <option value="blade">Трактор с отвалом (500 руб/сотка)</option>
+                                <option value="auger">Трактор со шнеком (1000 руб/сотка)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="snowType">Тип снега *</label>
+                            <select id="snowType" required>
+                                <option value="fresh">Свежий, не мокрый (+20%)</option>
+                                <option value="normal">Обычный (без надбавки)</option>
+                                <option value="wet">Мокрый, плотный (+20%)</option>
+                                <option value="ice">Лёд, многократный наст (+30%)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="weatherCondition">Погодные условия *</label>
+                            <select id="weatherCondition" required>
+                                <option value="normal">Нормальные (без надбавки)</option>
+                                <option value="bad">Плохие (снегопад, метель +5%)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Дополнительные услуги</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="shovelManCheck" value="500">
+                            <label for="shovelManCheck">Человек с лопатой (+500 руб) <span class="temporary-note">(только по выходным)</span></label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="pensionerCheck">
+                            <label for="pensionerCheck">Я пенсионер и смогу это доказать (скидка -10%)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="weatherDescription">Опишите состояние снега и погоду *</label>
+                        <textarea id="weatherDescription" rows="3" required placeholder="Например: Снег выпал вчера, около 15 см, пушистый. Сегодня слабый снегопад."></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="address">Адрес участка</label>
+                        <input type="text" id="address" placeholder="Например: д. Козино, ул. Центральная, д. 15">
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="calculatePrice()">Рассчитать стоимость</button>
+                    
+                    <!-- Кнопка для быстрого заказа после расчета -->
+                    <button type="button" class="btn btn-telegram" id="quickOrderBtn" style="display: none; margin-top: 15px;">
+                        <i class="fab fa-telegram"></i> Заказать по рассчитанной цене
+                    </button>
+                </form>
+                
+                <div class="result-container" id="resultContainer" style="display: none;">
+                    <div class="result-title">Итоговая стоимость уборки:</div>
+                    <div class="total-price" id="totalPrice">0 руб.</div>
+                    
+                    <div class="price-breakdown" id="priceBreakdown">
+                        <!-- Здесь будет детализация -->
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> 
+                        Окончательная цена может быть скорректирована после осмотра участка.
+                    </p>
+                    <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">
+                        <i class="fas fa-exclamation-circle" style="color: #ff9800;"></i> 
+                        Услуга "Человек с лопатой" временно доступна только по выходным дням.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма заказа -->
+    <section class="order-section">
+        <div class="container">
+            <h2 class="section-title">Оформить заказ на уборку снега</h2>
+            
+            <div class="form-container">
+                <form id="orderForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="orderName">Ваше имя *</label>
+                            <input type="text" id="orderName" required placeholder="Иван Иванов">
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="orderPhone">Телефон *</label>
+                            <input type="tel" id="orderPhone" required placeholder="+7 (___) ___-__-__">
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="orderAddress">Адрес участка *</label>
+                        <input type="text" id="orderAddress" required placeholder="д. Козино, ул. Центральная, д. 15">
+                        <div class="error-message" id="addressError"></div>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="orderArea">Площадь (соток) *</label>
+                            <input type="number" id="orderArea" min="1" required>
+                            <div class="error-message" id="areaError"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="orderEquipment">Оборудование *</label>
+                            <select id="orderEquipment" required>
+                                <option value="blade">Трактор с отвалом</option>
+                                <option value="auger">Трактор со шнеком</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="orderSnowType">Тип снега *</label>
+                        <select id="orderSnowType" required>
+                            <option value="fresh">Свежий, не мокрый (+20%)</option>
+                            <option value="normal">Обычный (без надбавки)</option>
+                            <option value="wet">Мокрый, плотный (+20%)</option>
+                            <option value="ice">Лёд, многократный наст (+30%)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="orderWeather">Погодные условия *</label>
+                        <select id="orderWeather" required>
+                            <option value="normal">Нормальные (без надбавки)</option>
+                            <option value="bad">Плохие (снегопад, метель +5%)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="orderWeatherDesc">Опишите состояние снега и погоду *</label>
+                        <textarea id="orderWeatherDesc" rows="3" required placeholder="Подробно опишите состояние снега (высота, плотность, есть ли лед) и текущие погодные условия."></textarea>
+                        <div class="error-message" id="weatherDescError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="orderMessage">Дополнительная информация</label>
+                        <textarea id="orderMessage" placeholder="Особенности участка, удобное время, дополнительные пожелания..."></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="orderShovelMan">
+                            <label for="orderShovelMan">Добавить человека с лопатой (+500 руб) <span class="temporary-note">(только по выходным)</span></label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="orderPensioner">
+                            <label for="orderPensioner">Я пенсионер и смогу это доказать (скидка -10%)</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-telegram" id="submitOrderBtn">
+                        <i class="fab fa-telegram"></i> Отправить заявку в Telegram
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem;">
+                        Или позвоните напрямую: <strong>+7 (991) 253-27-47</strong>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">УборкаСнега24</h3>
+                    <p style="font-size: 0.9rem;">Профессиональная уборка снега в Красногорском районе. Работаем в любых условиях.</p>
+                    <p><i class="fas fa-tractor"></i> Трактор Агромаш МТ-110</p>
+                    <p><i class="fas fa-snowplow"></i> Отвал 60см и шнек 110см</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Контакты</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +7 (991) 253-27-47</li>
+                        <li><i class="fab fa-telegram"></i> Telegram: @SNEGOUBORKA_24BOT</li>
+                        <li><i class="fas fa-map-marker-alt"></i> д. Козино (Красногорское направление)</li>
+                        <li><i class="fas fa-clock"></i> Работаем в любых условиях</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Услуги и цены</h3>
+                    <ul class="footer-links">
+                        <li>Трактор с отвалом: 500 руб/сотка</li>
+                        <li>Трактор со шнеком: 1000 руб/сотка</li>
+                        <li>Человек с лопатой: +500 руб (только по выходным)</li>
+                        <li>Скидки пенсионерам: -10% (при подтверждении)</li>
+                        <li>Скидки за объем: -10% / -15%</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 УборкаСнега24. Профессиональная уборка снега.</p>
+                <p class="weather-disclaimer" style="margin-top: 10px;">
+                    <i class="fas fa-comment-alt"></i> 
+                    Для точного расчета стоимости пожалуйста, подробно опишите состояние снега и погодные условия.
+                </p>
+                <p style="margin-top: 10px; font-size: 0.75rem;">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    Услуга "Человек с лопатой" временно доступна только по выходным дням.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Telegram Bot Configuration
+        const BOT_TOKEN = '7706546715:AAHreJmW6N_NQ-QD3NcWthWEHEO_fw3Zig0';
+        const CHAT_ID = '7706546715';
+        
+        // Переменная для хранения рассчитанной цены
+        let calculatedPrice = 0;
+        
+        // Функция для показа уведомлений
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Функция для очистки ошибок
+        function clearErrors() {
+            document.querySelectorAll('.error-input').forEach(el => {
+                el.classList.remove('error-input');
+            });
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+                el.textContent = '';
+            });
+        }
+        
+        // Функция для отображения ошибки
+        function showError(inputId, message) {
+            const input = document.getElementById(inputId);
+            const errorElement = document.getElementById(inputId + 'Error');
+            
+            if (input) {
+                input.classList.add('error-input');
+            }
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+        
+        // Функция валидации телефона
+        function validatePhone(phone) {
+            // Удаляем все нецифровые символы
+            const cleaned = phone.replace(/\D/g, '');
+            // Проверяем, что номер начинается с 7 или 8 и имеет 11 цифр
+            return cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'));
+        }
+        
+        // Улучшенная маска для телефона с возможностью удаления
+        function setupPhoneMask() {
+            const phoneInput = document.getElementById('orderPhone');
+            
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                
+                // Если нажата backspace или delete, позволяем удалять
+                if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward') {
+                    return;
+                }
+                
+                // Форматируем только если есть цифры
+                if (value.length > 0) {
+                    // Оставляем только 11 цифр
+                    value = value.substring(0, 11);
+                    
+                    // Форматируем номер
+                    let formatted = '+7';
+                    if (value.length > 1) {
+                        formatted += ' (' + value.substring(1, 4);
+                    }
+                    if (value.length >= 4) {
+                        formatted += ') ' + value.substring(4, 7);
+                    }
+                    if (value.length >= 7) {
+                        formatted += '-' + value.substring(7, 9);
+                    }
+                    if (value.length >= 9) {
+                        formatted += '-' + value.substring(9, 11);
+                    }
+                    
+                    e.target.value = formatted;
+                    
+                    // Устанавливаем курсор в конец
+                    setTimeout(() => {
+                        e.target.selectionStart = e.target.selectionEnd = formatted.length;
+                    }, 0);
+                }
+            });
+            
+            // Разрешаем все клавиши навигации и удаления
+            phoneInput.addEventListener('keydown', function(e) {
+                // Разрешаем: backspace, delete, tab, escape, enter
+                if ([8, 9, 27, 13, 46].includes(e.keyCode)) {
+                    return;
+                }
+                
+                // Разрешаем: home, end, left, right
+                if (e.keyCode >= 35 && e.keyCode <= 39) {
+                    return;
+                }
+                
+                // Разрешаем цифры и специальные клавиши
+                if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                    return;
+                }
+                
+                // Запрещаем все остальное
+                e.preventDefault();
+            });
+        }
+        
+        // Функция расчета цены
+        function calculatePrice() {
+            const area = parseInt(document.getElementById('area').value) || 0;
+            const equipment = document.getElementById('equipment').value;
+            const snowType = document.getElementById('snowType').value;
+            const weatherCondition = document.getElementById('weatherCondition').value;
+            const shovelMan = document.getElementById('shovelManCheck').checked;
+            const pensioner = document.getElementById('pensionerCheck').checked;
+            
+            if (area < 1) {
+                showNotification('Пожалуйста, укажите площадь участка', 'error');
+                return;
+            }
+            
+            // Базовая цена за сотку
+            let pricePerSotka = 500; // Для отвала
+            if (equipment === 'auger') {
+                pricePerSotka = 1000; // Для шнека (x2 от отвала)
+            }
+            
+            // Базовая стоимость
+            let basePrice = area * pricePerSotka;
+            
+            // Минимальная стоимость
+            const minPrice = equipment === 'auger' ? 4000 : 2000;
+            if (basePrice < minPrice) {
+                basePrice = minPrice;
+            }
+            
+            // Надбавки за тип снега
+            let snowMultiplier = 1;
+            switch(snowType) {
+                case 'fresh':
+                    snowMultiplier = 1.2; // +20%
+                    break;
+                case 'wet':
+                    snowMultiplier = 1.2; // +20%
+                    break;
+                case 'ice':
+                    snowMultiplier = 1.3; // +30%
+                    break;
+                default:
+                    snowMultiplier = 1;
+            }
+            
+            // Надбавка за плохую погоду
+            let weatherMultiplier = 1;
+            if (weatherCondition === 'bad') {
+                weatherMultiplier = 1.05; // +5%
+            }
+            
+            // Скидки за объем
+            let volumeDiscount = 0;
+            if (area >= 15) {
+                volumeDiscount = 0.15; // -15%
+            } else if (area >= 10) {
+                volumeDiscount = 0.10; // -10%
+            }
+            
+            // Скидка для пенсионеров (остается 10%)
+            let pensionerDiscount = pensioner ? 0.10 : 0;
+            
+            // Общая скидка (суммируется)
+            let totalDiscount = volumeDiscount + pensionerDiscount;
+            
+            // Человек с лопатой
+            let shovelPrice = shovelMan ? 500 : 0;
+            
+            // Итоговая цена
+            calculatedPrice = basePrice * snowMultiplier * weatherMultiplier;
+            calculatedPrice = calculatedPrice * (1 - totalDiscount) + shovelPrice;
+            
+            // Округляем до целых
+            calculatedPrice = Math.round(calculatedPrice);
+            
+            // Показываем результат
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('totalPrice').textContent = `${calculatedPrice.toLocaleString('ru-RU')} руб.`;
+            
+            // Показываем кнопку быстрого заказа
+            document.getElementById('quickOrderBtn').style.display = 'block';
+            
+            // Детализация
+            let breakdown = `
+                <div class="breakdown-item">
+                    <span>Базовая стоимость (${area} соток × ${pricePerSotka} руб.)</span>
+                    <span>${Math.round(basePrice).toLocaleString('ru-RU')} руб.</span>
+                </div>
+            `;
+            
+            if (snowMultiplier > 1) {
+                breakdown += `
+                    <div class="breakdown-item">
+                        <span>Надбавка за тип снега (${Math.round((snowMultiplier - 1) * 100)}%)</span>
+                        <span>+${Math.round(basePrice * (snowMultiplier - 1)).toLocaleString('ru-RU')} руб.</span>
+                    </div>
+                `;
+            }
+            
+            if (weatherMultiplier > 1) {
+                breakdown += `
+                    <div class="breakdown-item">
+                        <span>Надбавка за плохую погоду (5%)</span>
+                        <span>+${Math.round(basePrice * snowMultiplier * (weatherMultiplier - 1)).toLocaleString('ru-RU')} руб.</span>
+                    </div>
+                `;
+            }
+            
+            if (volumeDiscount > 0) {
+                breakdown += `
+                    <div class="breakdown-item">
+                        <span>Скидка за объем (${Math.round(volumeDiscount * 100)}%)</span>
+                        <span>-${Math.round(basePrice * snowMultiplier * weatherMultiplier * volumeDiscount).toLocaleString('ru-RU')} руб.</span>
+                    </div>
+                `;
+            }
+            
+            if (pensionerDiscount > 0) {
+                breakdown += `
+                    <div class="breakdown-item">
+                        <span>Скидка пенсионерам (${Math.round(pensionerDiscount * 100)}%)</span>
+                        <span>-${Math.round(basePrice * snowMultiplier * weatherMultiplier * pensionerDiscount).toLocaleString('ru-RU')} руб.</span>
+                    </div>
+                `;
+            }
+            
+            if (shovelPrice > 0) {
+                breakdown += `
+                    <div class="breakdown-item">
+                        <span>Человек с лопатой (только по выходным)</span>
+                        <span>+${shovelPrice.toLocaleString('ru-RU')} руб.</span>
+                    </div>
+                `;
+            }
+            
+            breakdown += `
+                <div class="breakdown-item total">
+                    <span>ИТОГО:</span>
+                    <span>${calculatedPrice.toLocaleString('ru-RU')} руб.</span>
+                </div>
+            `;
+            
+            document.getElementById('priceBreakdown').innerHTML = breakdown;
+            
+            // Прокручиваем к результату
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Заполняем основную форму данными из калькулятора
+            document.getElementById('orderArea').value = area;
+            document.getElementById('orderEquipment').value = equipment;
+            document.getElementById('orderSnowType').value = snowType;
+            document.getElementById('orderWeather').value = weatherCondition;
+            document.getElementById('orderWeatherDesc').value = document.getElementById('weatherDescription').value;
+            document.getElementById('orderAddress').value = document.getElementById('address').value;
+            document.getElementById('orderShovelMan').checked = shovelMan;
+            document.getElementById('orderPensioner').checked = pensioner;
+        }
+        
+        // Функция отправки заявки в Telegram
+        async function sendToTelegram(formData, isQuickOrder = false) {
+            const {
+                name, phone, address, area, equipment, snowType, weatherCondition, 
+                weatherDesc, message, shovelMan, pensioner, calculatedPrice: price
+            } = formData;
+            
+            // Формируем сообщение для Telegram
+            const telegramMessage = `
+🚜 *НОВАЯ ЗАЯВКА УборкаСнега24*
+
+👤 *Имя:* ${name}
+📞 *Телефон:* ${phone}
+📍 *Адрес:* ${address}
+📏 *Площадь:* ${area} соток
+🔧 *Оборудование:* ${equipment === 'auger' ? 'Трактор со шнеком' : 'Трактор с отвалом'}
+💰 ${isQuickOrder ? 'Рассчитанная стоимость' : 'Примерная стоимость'}: ${price.toLocaleString('ru-RU')} руб.
+
+❄️ *Состояние снега:* 
+• Тип: ${snowType === 'fresh' ? 'Свежий, не мокрый (+20%)' : 
+         snowType === 'wet' ? 'Мокрый, плотный (+20%)' : 
+         snowType === 'ice' ? 'Лёд, наст (+30%)' : 'Обычный'}
+• Погода: ${weatherCondition === 'bad' ? 'Плохие (+5%)' : 'Нормальные'}
+• Описание: ${weatherDesc}
+
+🛠 *Дополнительно:* 
+• Человек с лопатой: ${shovelMan ? 'Да (+500 руб, только по выходным)' : 'Нет'}
+• Пенсионер: ${pensioner ? 'Да (скидка -10%, при подтверждении)' : 'Нет'}
+
+📝 *Сообщение клиента:* ${message || 'нет'}
+
+⏰ *Время заявки:* ${new Date().toLocaleString('ru-RU')}
+${isQuickOrder ? '📊 *Тип заявки:* Быстрый заказ из калькулятора' : '📊 *Тип заявки:* Полная форма'}
+
+🌐 *Источник:* сайт УборкаСнега24
+            `;
+            
+            try {
+                // Отправляем в Telegram через прокси для обхода CORS
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: telegramMessage,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    return { success: true, message: '✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.' };
+                } else {
+                    console.error('Ошибка Telegram:', data);
+                    
+                    // Пробуем альтернативный способ через форму
+                    const altMessage = `Заявка от ${name}\nТелефон: ${phone}\nАдрес: ${address}\nПлощадь: ${area} соток\nОборудование: ${equipment === 'auger' ? 'Трактор со шнеком' : 'Трактор с отвалом'}\nСтоимость: ${price} руб.`;
+                    const telegramLink = `https://t.me/${CHAT_ID}?text=${encodeURIComponent(altMessage)}`;
+                    
+                    return { 
+                        success: false, 
+                        message: `⚠️ Ошибка отправки. <a href="${telegramLink}" target="_blank">Нажмите здесь чтобы отправить вручную</a> или позвоните: +7 (991) 253-27-47`,
+                        telegramLink: telegramLink
+                    };
+                }
+                
+            } catch (error) {
+                console.error('Ошибка:', error);
+                
+                // Альтернатива: открываем Telegram с готовым сообщением
+                const altMessage = `Заявка от ${name}\nТелефон: ${phone}\nАдрес: ${address}\nПлощадь: ${area} соток`;
+                const telegramLink = `https://t.me/${CHAT_ID}?text=${encodeURIComponent(altMessage)}`;
+                
+                return { 
+                    success: false, 
+                    message: `⚠️ Ошибка соединения. <a href="${telegramLink}" target="_blank">Нажмите здесь чтобы отправить вручную</a> или позвоните: +7 (991) 253-27-47`,
+                    telegramLink: telegramLink
+                };
+            }
+        }
+        
+        // Обработка основной формы заказа
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Очищаем предыдущие ошибки
+            clearErrors();
+            
+            // Получаем данные формы
+            const name = document.getElementById('orderName').value.trim();
+            const phone = document.getElementById('orderPhone').value.trim();
+            const address = document.getElementById('orderAddress').value.trim();
+            const area = document.getElementById('orderArea').value.trim();
+            const equipment = document.getElementById('orderEquipment').value;
+            const snowType = document.getElementById('orderSnowType').value;
+            const weatherCondition = document.getElementById('orderWeather').value;
+            const weatherDesc = document.getElementById('orderWeatherDesc').value.trim();
+            const message = document.getElementById('orderMessage').value.trim();
+            const shovelMan = document.getElementById('orderShovelMan').checked;
+            const pensioner = document.getElementById('orderPensioner').checked;
+            
+            // Валидация
+            let isValid = true;
+            
+            if (!name) {
+                showError('orderName', 'Пожалуйста, введите ваше имя');
+                isValid = false;
+            }
+            
+            if (!phone || !validatePhone(phone)) {
+                showError('orderPhone', 'Пожалуйста, введите корректный номер телефона');
+                isValid = false;
+            }
+            
+            if (!address) {
+                showError('orderAddress', 'Пожалуйста, введите адрес участка');
+                isValid = false;
+            }
+            
+            if (!area || area < 1) {
+                showError('orderArea', 'Пожалуйста, введите корректную площадь');
+                isValid = false;
+            }
+            
+            if (!weatherDesc) {
+                showError('orderWeatherDesc', 'Пожалуйста, опишите состояние снега');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                showNotification('Пожалуйста, заполните все обязательные поля корректно', 'error');
+                return;
+            }
+            
+            // Рассчитываем цену для заказа
+            let pricePerSotka = equipment === 'auger' ? 1000 : 500;
+            let basePrice = area * pricePerSotka;
+            let minPrice = equipment === 'auger' ? 4000 : 2000;
+            if (basePrice < minPrice) basePrice = minPrice;
+            
+            // Упрощенный расчет для Telegram
+            let snowMultiplier = 1;
+            if (snowType === 'fresh' || snowType === 'wet') snowMultiplier = 1.2;
+            if (snowType === 'ice') snowMultiplier = 1.3;
+            
+            let weatherMultiplier = weatherCondition === 'bad' ? 1.05 : 1;
+            
+            let volumeDiscount = 0;
+            if (area >= 15) volumeDiscount = 0.15;
+            else if (area >= 10) volumeDiscount = 0.10;
+            
+            let pensionerDiscount = pensioner ? 0.10 : 0;
+            let totalDiscount = volumeDiscount + pensionerDiscount;
+            
+            let finalPrice = basePrice * snowMultiplier * weatherMultiplier;
+            finalPrice = finalPrice * (1 - totalDiscount);
+            if (shovelMan) finalPrice += 500;
+            finalPrice = Math.round(finalPrice);
+            
+            const submitBtn = document.getElementById('submitOrderBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('sending');
+            
+            const formData = {
+                name, phone, address, area, equipment, snowType, weatherCondition,
+                weatherDesc, message, shovelMan, pensioner, calculatedPrice: finalPrice
+            };
+            
+            const result = await sendToTelegram(formData, false);
+            
+            if (result.success) {
+                showNotification(result.message, 'success');
+                document.getElementById('orderForm').reset();
+            } else {
+                // Для HTML-сообщений используем innerHTML
+                const notification = document.getElementById('notification');
+                notification.innerHTML = result.message;
+                notification.className = 'notification error';
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 10000);
+            }
+            
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('sending');
+        });
+        
+        // Обработка быстрого заказа из калькулятора
+        document.getElementById('quickOrderBtn').addEventListener('click', async function() {
+            if (calculatedPrice === 0) {
+                showNotification('Сначала рассчитайте стоимость', 'error');
+                return;
+            }
+            
+            const name = prompt('Введите ваше имя:');
+            if (!name) return;
+            
+            const phone = prompt('Введите ваш телефон (например: +7 991 253 27 47):');
+            if (!phone) return;
+            
+            if (!validatePhone(phone)) {
+                showNotification('Пожалуйста, введите корректный номер телефона', 'error');
+                return;
+            }
+            
+            const address = document.getElementById('address').value.trim() || 
+                           prompt('Введите адрес участка:');
+            if (!address) return;
+            
+            const area = document.getElementById('area').value;
+            const equipment = document.getElementById('equipment').value;
+            const snowType = document.getElementById('snowType').value;
+            const weatherCondition = document.getElementById('weatherCondition').value;
+            const weatherDesc = document.getElementById('weatherDescription').value.trim();
+            const shovelMan = document.getElementById('shovelManCheck').checked;
+            const pensioner = document.getElementById('pensionerCheck').checked;
+            
+            const quickOrderBtn = document.getElementById('quickOrderBtn');
+            const originalText = quickOrderBtn.innerHTML;
+            quickOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+            quickOrderBtn.disabled = true;
+            
+            const formData = {
+                name: name.trim(),
+                phone: phone.trim(),
+                address: address.trim(),
+                area,
+                equipment,
+                snowType,
+                weatherCondition,
+                weatherDesc: weatherDesc || 'Не указано',
+                message: 'Быстрый заказ из калькулятора',
+                shovelMan,
+                pensioner,
+                calculatedPrice
+            };
+            
+            const result = await sendToTelegram(formData, true);
+            
+            if (result.success) {
+                showNotification(result.message, 'success');
+                // Очищаем форму калькулятора
+                document.getElementById('calculatorForm').reset();
+                document.getElementById('resultContainer').style.display = 'none';
+                document.getElementById('quickOrderBtn').style.display = 'none';
+                calculatedPrice = 0;
+            } else {
+                const notification = document.getElementById('notification');
+                notification.innerHTML = result.message;
+                notification.className = 'notification error';
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 10000);
+            }
+            
+            quickOrderBtn.innerHTML = originalText;
+            quickOrderBtn.disabled = false;
+        });
+        
+        // Анимация при скролле
+        function checkScroll() {
+            const equipmentSections = document.querySelectorAll('.equipment-container');
+            
+            equipmentSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+            
+            // Прогресс-бар
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+        
+        // Инициализация при загрузке
+        window.addEventListener('DOMContentLoaded', function() {
+            // Настраиваем маску телефона
+            setupPhoneMask();
+            
+            // Проверяем скролл
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+            
+            // Синхронизация данных между калькулятором и формой заказа
+            document.getElementById('area').addEventListener('input', function() {
+                document.getElementById('orderArea').value = this.value;
+            });
+            
+            // Проверка изображений
+            const images = ['mainTractor', 'tractorBlade', 'tractorAuger', 'shovelMan'];
+            images.forEach(imgId => {
+                const img = document.getElementById(imgId);
+                if (img) {
+                    img.onerror = function() {
+                        console.warn(`Изображение ${imgId} не загрузилось: ${img.src}`);
+                        // В fallback-изображение уже встроено в onerror атрибут
+                    };
+                }
+            });
+            
+            // Автоматический расчет при изменении значений в калькуляторе
+            document.querySelectorAll('#calculatorForm input, #calculatorForm select').forEach(element => {
+                element.addEventListener('change', calculatePrice);
+            });
+        });
+    </script>
+</body>
+</html>
